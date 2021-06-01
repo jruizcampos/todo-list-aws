@@ -50,6 +50,31 @@ Resources:
            - 'dynamodb:DeleteItem'
           Resource:
              !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/todosTable-${Stage}"
+  
+  GetFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: get.get
+      Events:
+        List:
+          Type: Api
+          Properties:
+            Path: /todos/{id}
+            Method: get
+      Policies:
+        Statement:
+          Effect: Allow
+          Action:
+           - 'dynamodb:Query'
+           - 'dynamodb:Scan'
+           - 'dynamodb:GetItem'
+           - 'dynamodb:PutItem'
+           - 'dynamodb:UpdateItem'
+           - 'dynamodb:DeleteItem'
+          Resource:
+             !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/todosTable-${Stage}"
+  
   CreateFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -73,7 +98,55 @@ Resources:
            - 'dynamodb:DeleteItem'
          Resource:
            !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/todosTable-${Stage}"
-             
+  
+  DeleteFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: delete.delete
+      Events:
+        Create:
+          Type: Api
+          Properties:
+            Path: /todos/{id}
+            Method: delete
+      Policies:
+        Statement:
+         Effect: Allow
+         Action:
+           - 'dynamodb:Query'
+           - 'dynamodb:Scan'
+           - 'dynamodb:GetItem'
+           - 'dynamodb:PutItem'
+           - 'dynamodb:UpdateItem'
+           - 'dynamodb:DeleteItem'
+         Resource:
+           !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/todosTable-${Stage}"
+  
+  UpdateFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: update.update
+      Events:
+        Create:
+          Type: Api
+          Properties:
+            Path: /todos/{id}
+            Method: put
+      Policies:
+        Statement:
+         Effect: Allow
+         Action:
+           - 'dynamodb:Query'
+           - 'dynamodb:Scan'
+           - 'dynamodb:GetItem'
+           - 'dynamodb:PutItem'
+           - 'dynamodb:UpdateItem'
+           - 'dynamodb:DeleteItem'
+         Resource:
+           !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/todosTable-${Stage}"
+  
   TranslateFunction:
     Type: AWS::Serverless::Function
     Properties:

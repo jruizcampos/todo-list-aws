@@ -5,6 +5,7 @@ import boto3
 from utils import decimalencoder
 from utils.todoTableClass import todoTableClass
 
+
 if os.environ["ENVIRONMENT"] == "LOCAL":
     dynamodb = None
 else:

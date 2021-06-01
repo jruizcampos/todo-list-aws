@@ -2,7 +2,7 @@ import os
 import json
 import boto3
 
-from todos import decimalencoder
+from utils import decimalencoder
 from utils.todoTableClass import todoTableClass
 
 
@@ -16,9 +16,9 @@ def translate(event, context):
     mytable = todoTableClass(dynamodb)
     
     source_language = 'auto' # Dejamos que Amazon Comprehend detecte el lenguaje origen
-    target_language = event['pathParameters']['language']
+    target_language = event['pathParameters']['lang']
     
-    result = mytable.translate_todo(event['pathParameters']['id'],source_language,target_language);
+    result = mytable.translate_todo(event['pathParameters']['id'],source_language,target_language)
     
     response = {
                 "statusCode": 200,

@@ -4,8 +4,8 @@ import logging
 import os
 import boto3
 
-from todos import decimalencoder
-from utils import todoTableClass
+from utils import decimalencoder
+from utils.todoTableClass import todoTableClass
 
 if os.environ["ENVIRONMENT"] == "LOCAL":
     dynamodb = None
@@ -14,7 +14,7 @@ else:
 
 #Actualiza un elemento de la tabla a partir de su id
 def update(event, context):
-    mytable = todoTableClass(dynamodb);
+    mytable = todoTableClass(dynamodb)
     
     data = json.loads(event['body'])
     
