@@ -186,16 +186,58 @@ Resources:
         WriteCapacityUnits: 1
 
 Outputs:
-  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
-  # Find out more about other implicit resources you can reference within SAM
-  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
   ListApi:
-    Description: "API Gateway endpoint URL for Prod stage for List function"
+    Description: "API Gateway endpoint URL for ${Stage} stage for List function"
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/todos/"
   ListFunction:
     Description: "List Lambda Function ARN"
     Value: !GetAtt ListFunction.Arn
   ListFunctionIamRole:
-    Description: "Implicit IAM Role created for Hello World function"
+    Description: "Implicit IAM Role created for List function"
     Value: !GetAtt ListFunctionRole.Arn
+  GetApi:
+    Description: "API Gateway endpoint URL for ${Stage} stage for Get function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/todos/{id}"
+  GetFunction:
+    Description: "Get Lambda Function ARN"
+    Value: !GetAtt GetFunction.Arn
+  GetFunctionIamRole:
+    Description: "Implicit IAM Role created for Get function"
+    Value: !GetAtt GetFunctionRole.Arn
+  CreateApi:
+    Description: "API Gateway endpoint URL for ${Stage} stage for Create function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/todos/"
+  CreateFunction:
+    Description: "Create Lambda Function ARN"
+    Value: !GetAtt CreateFunction.Arn
+  CreateFunctionIamRole:
+    Description: "Implicit IAM Role created for Create function"
+    Value: !GetAtt CreateFunctionRole.Arn
+  DeleteApi:
+    Description: "API Gateway endpoint URL for ${Stage} stage for Delete function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/todos/{id}"
+  DeleteFunction:
+    Description: "Delete Lambda Function ARN"
+    Value: !GetAtt DeleteFunction.Arn
+  DeleteFunctionIamRole:
+    Description: "Implicit IAM Role created for Delete function"
+    Value: !GetAtt DeleteFunctionRole.Arn
+  UpdateApi:
+    Description: "API Gateway endpoint URL for ${Stage} stage for Update function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/todos/{id}"
+  UpdateFunction:
+    Description: "Update Lambda Function ARN"
+    Value: !GetAtt UpdateFunction.Arn
+  UpdateFunctionIamRole:
+    Description: "Implicit IAM Role created for Update function"
+    Value: !GetAtt UpdateFunctionRole.Arn
+  TranslateApi:
+    Description: "API Gateway endpoint URL for ${Stage} stage for Translate function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/todos/{id}{lang}"
+  TranslateFunction:
+    Description: "Translate Lambda Function ARN"
+    Value: !GetAtt TranslateFunction.Arn
+  TranslateFunctionIamRole:
+    Description: "Implicit IAM Role created for Translate function"
+    Value: !GetAtt TranslateFunctionRole.Arn
 
