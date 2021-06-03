@@ -170,7 +170,20 @@ Resources:
            - 'dynamodb:DeleteItem'
          Resource:
             !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/todosTable-${Stage}"
-
+         Effect: Allow
+         Action:
+           - 'translate:TranslateText'
+           - 'translate:GetTerminology'
+           - 'translate:ListTerminologies'
+           - 'translate:ListTextTranslationJobs'
+           - 'translate:DescribeTextTranslationJob'
+           - 'translate:GetParallelData'
+           - 'translate:ListParallelData'
+           - 'comprehend:DetectDominantLanguage'
+           - 'cloudwatch:GetMetricStatistics'
+           - 'cloudwatch:ListMetrics'
+         Resource: "*"
+            
   todosTable:
     Type: 'AWS::DynamoDB::Table'
     Properties:
