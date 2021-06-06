@@ -160,18 +160,20 @@ Resources:
             Method: get
       Policies:
         Statement:
-         Effect: Allow
-         Action:
+        - Sid: AccesoDynamoDB
+          Effect: Allow
+          Action:
            - 'dynamodb:Query'
            - 'dynamodb:Scan'
            - 'dynamodb:GetItem'
            - 'dynamodb:PutItem'
            - 'dynamodb:UpdateItem'
            - 'dynamodb:DeleteItem'
-         Resource:
+          Resource:
             !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/todosTable-${Stage}"
-         Effect: Allow
-         Action:
+        - Sid: AccesoAmazonTranslate
+          Effect: Allow
+          Action:
            - 'translate:TranslateText'
            - 'translate:GetTerminology'
            - 'translate:ListTerminologies'
@@ -182,7 +184,7 @@ Resources:
            - 'comprehend:DetectDominantLanguage'
            - 'cloudwatch:GetMetricStatistics'
            - 'cloudwatch:ListMetrics'
-         Resource: "*"
+          Resource: "*"
             
   todosTable:
     Type: 'AWS::DynamoDB::Table'
