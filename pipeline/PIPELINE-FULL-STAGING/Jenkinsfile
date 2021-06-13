@@ -42,10 +42,10 @@
     }
     post {
         always{
-            sh "docker rm -f dynamodb"
+            sh 'bash docker rm -f dynamodb'
         }
         failure {
-            echo 'Bad news!!'
+            echo 'Malas noticias!!'
             deleteDir()
         }
     }
