@@ -20,7 +20,7 @@ def list(event, context):
     response = {
             "statusCode": 200,
             "body": json.dumps(result['Items'],
-                    cls=decimalencoder.DecimalEncoder)
+                               cls=decimalencoder.DecimalEncoder)
         }
 
     return response
