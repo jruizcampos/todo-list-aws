@@ -14,26 +14,26 @@
                     sh 'bash pipeline/PIPELINE-FULL-STAGING/1-setup.sh'  
             }
         }
-        stage('Stage 2: Testing'){
+        stage('Stage 2: Pruebas'){
             steps{
                     sh 'bash pipeline/PIPELINE-FULL-STAGING/2-testing.sh'
             }
         }
-        stage('Stage 3: Build'){
+        stage('Stage 3: Construccion'){
             steps{
                     sh 'bash pipeline/PIPELINE-FULL-STAGING/3-package.sh'
            }
         }
-        //stage('Stage 4: Deploy'){
-        //    steps{
-        //            sh 'bash pipeline/PIPELINE-FULL-STAGING/4-deploy.sh'
-        //    }
-        //}
-        //stage('Stage 5: Integration Test'){
-        //    steps{
-        //        sh 'bash pipeline/PIPELINE-FULL-STAGING/5-integration.sh'
-        //    }
-        //}
+        stage('Stage 4: Despliegue'){
+            steps{
+                    sh 'bash pipeline/PIPELINE-FULL-STAGING/4-deploy.sh'
+            }
+        }
+        stage('Stage 5: Pruebas de Integracion'){
+            steps{
+                sh 'bash pipeline/PIPELINE-FULL-STAGING/5-integration.sh'
+            }
+        }
         stage('Stage 6: Limpieza'){
             steps{
               deleteDir()
