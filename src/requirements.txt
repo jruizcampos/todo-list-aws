@@ -1,3 +1,4 @@
 requests
 radon
 flake8
+bandit
