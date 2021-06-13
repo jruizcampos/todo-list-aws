@@ -2,3 +2,5 @@ requests
 radon
 flake8
 bandit
+moto[dynamodb2]
+coverage
