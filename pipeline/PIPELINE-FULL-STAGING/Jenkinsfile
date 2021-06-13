@@ -42,7 +42,7 @@
     }
     post {
         always{
-            sh 'bash docker rm -f dynamodb'
+            sh 'docker rm -f dynamodb'
         }
         failure {
             echo 'Malas noticias!!'
