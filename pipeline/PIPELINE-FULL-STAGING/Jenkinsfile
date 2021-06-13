@@ -42,6 +42,7 @@
     }
     post {
         always{
+            sh 'docker ps -a',
             sh 'docker rm -f dynamodb'
         }
         failure {
