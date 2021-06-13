@@ -44,8 +44,8 @@
         always{
             //sh 'docker rm -f dynamodb'
             sh '''#!/bin/bash
-                 docker ps -a
-                 docker rm -f dynamodb
+                 docker ps -a -q | xargs docker rm -f
+                 #docker rm -f dynamodb
             '''
         }
         failure {
