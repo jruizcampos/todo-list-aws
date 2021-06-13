@@ -14,7 +14,7 @@ parameter_overrides = "Stage=\"staging\""
 [staging.deploy]
 [staging.deploy.parameters]
 stack_name = "todo-list-aws-staging"
-s3_bucket = "es-unir-staging-s3-15728-artifacts"
+s3_bucket = "es-unir-staging-s3-28247-artifacts"
 s3_prefix = "todo-list-aws"
 region = "us-east-1"
 confirm_changeset = true
@@ -25,7 +25,7 @@ parameter_overrides = "Stage=\"staging\""
 [production.deploy]
 [production.deploy.parameters]
 stack_name = "todo-list-aws-production"
-s3_bucket = "es-unir-production-s3-15728-artifacts"
+s3_bucket = "es-unir-production-s3-28247-artifacts"
 s3_prefix = "todo-list-aws"
 region = "us-east-1"
 confirm_changeset = true
