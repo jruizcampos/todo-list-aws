@@ -1,13 +1,13 @@
  pipeline {
     agent any
     stages {
-        // stage('Stage 0: Checkout SCM'){
-        //     steps{
-        //         git branch: 'develop',
-        //         credentialsId: 'codecommit-user',
-        //         url: 'https://git-codecommit.us-east-1.amazonaws.com/v1/repos/todo-list-aws'
-        //     }
-        // }
+        stage('Stage 0: Checkout Proyecto GIT desde el REPO'){
+            steps{
+                    git branch: 'develop',
+                    credentialsId: 'codecommit-user-at-222923733616',
+                    url: 'https://git-codecommit.us-east-1.amazonaws.com/v1/repos/todo-list-aws'
+            }
+        }
         
         stage('Stage 1: Setup'){
             steps{
