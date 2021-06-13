@@ -12,14 +12,15 @@ else:
     dynamodb = boto3.resource("dynamodb")
 
 
-#Obtiene la lista completa de elementos
+# Obtiene la lista completa de elementos
 def list(event, context):
     mytable = todoTableClass(dynamodb)
     result = mytable.scan_todo()
-    
+
     response = {
             "statusCode": 200,
-            "body": json.dumps(result['Items'], cls=decimalencoder.DecimalEncoder)
+            "body": json.dumps(result['Items'],
+            cls=decimalencoder.DecimalEncoder)
         }
 
     return response

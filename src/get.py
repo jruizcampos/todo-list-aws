@@ -1,4 +1,4 @@
-import os
+# import os
 import json
 import boto3
 
@@ -16,10 +16,11 @@ else:
 def get(event, context):
     mytable = todoTableClass(dynamodb)
     result = mytable.get_todo(event['pathParameters']['id'])
-    
+
     response = {
                 "statusCode": 200,
-                "body": json.dumps(result['Item'], cls=decimalencoder.DecimalEncoder)
+                "body": json.dumps(result['Item'],
+                cls=decimalencoder.DecimalEncoder)
             }
 
     return response
