@@ -1,7 +1,7 @@
  pipeline {
     agent any
     stages {
-        stage('Stage 0: Checkout Proyecto GIT desde el REPO'){
+        stage('Stage 0: Checkout Proyecto GIT'){
             steps{
                     git branch: 'develop',
                     credentialsId: 'codecommit-user-at-222923733616',
