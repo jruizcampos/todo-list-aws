@@ -1,4 +1,4 @@
-# import os
+import os
 import json
 import boto3
 
@@ -12,7 +12,7 @@ else:
     dynamodb = boto3.resource("dynamodb")
 
 
-#Obtiene un elemento de la tabla a partir de su id
+# Obtiene un elemento de la tabla a partir de su id
 def get(event, context):
     mytable = todoTableClass(dynamodb)
     result = mytable.get_todo(event['pathParameters']['id'])
@@ -20,7 +20,7 @@ def get(event, context):
     response = {
                 "statusCode": 200,
                 "body": json.dumps(result['Item'],
-                cls=decimalencoder.DecimalEncoder)
+                    cls=decimalencoder.DecimalEncoder)
             }
 
     return response
