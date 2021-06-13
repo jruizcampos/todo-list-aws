@@ -17,8 +17,10 @@ class todoTableClass(object):
         self.tableName = os.environ['DYNAMODB_TABLE']
 
         if not dynamodb:
-            dynamodb = boto3.resource('dynamodb', endpoint_url='http://dynamodb:8000')
-            # dynamodb = boto3.resource('dynamodb', endpoint_url='http://localhost:8000')
+            dynamodb = boto3.resource('dynamodb',
+                                      endpoint_url='http://dynamodb:8000')
+            # dynamodb = boto3.resource('dynamodb',
+            #                           endpoint_url='http://localhost:8000')
         self.dynamodb = dynamodb
 
     def create_todo_table(self):
@@ -84,7 +86,7 @@ class todoTableClass(object):
     def update_todo(self, text, id, checked):
         timestamp = int(time.time() * 1000)
         table = self.dynamodb.Table(self.tableName)
-  
+
         try:
             result = table.update_item(
                 Key={
@@ -125,7 +127,7 @@ class todoTableClass(object):
                 'updatedAt': timestamp,
             }
             table.put_item(Item=item)
-            
+
         except Exception as e:
             raise e
         else:
@@ -157,9 +159,10 @@ class todoTableClass(object):
         )
 
         try:
-            result = traductor.translate_text(Text=result['Item'].get('text'),
-                                              SourceLanguageCode=source_language,
-                                              TargetLanguageCode=target_language)
+            result = traductor.translate_text(
+                                        Text=result['Item'].get('text'),
+                                        SourceLanguageCode=source_language,
+                                        TargetLanguageCode=target_language)
 
         except Exception as e:
             raise e
