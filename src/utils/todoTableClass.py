@@ -12,9 +12,11 @@ traductor = boto3.client('translate')
 class todoTableClass(object):
 
     # def __init__(self, table, dynamodb=None):
+    # Constructor de la clase por defecto
     def __init__(self, dynamodb=None):
         # self.tableName = table
-        self.tableName = os.environ['DYNAMODB_TABLE']
+        if os.environ['DYNAMODB_TABLE']:
+            self.tableName = os.environ['DYNAMODB_TABLE']
 
         if not dynamodb:
             dynamodb = boto3.resource('dynamodb',
@@ -22,7 +24,12 @@ class todoTableClass(object):
             # dynamodb = boto3.resource('dynamodb',
             #                           endpoint_url='http://localhost:8000')
         self.dynamodb = dynamodb
-
+    
+    # Permite establecer el nombre de la tabla
+    def set_table_name(self, tableName):
+        self.tableName = tableName
+    
+    # Metodo que crea la tabla
     def create_todo_table(self):
         table = self.dynamodb.create_table(
             TableName=self.tableName,
@@ -52,10 +59,12 @@ class todoTableClass(object):
 
         return table
 
+    # Metodo que elimina la tabla
     def delete_todo_table(self):
         table = self.dynamodb.Table(self.tableName)
         table.delete()
-
+    
+    ################### FUNCIONES #####################
     # Obtiene un elemento de la tabla a partir de su id
     def get_todo(self, id):
         table = self.dynamodb.Table(self.tableName)

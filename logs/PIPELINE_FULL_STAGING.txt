@@ -1,0 +1,554 @@
+Started by user unir
+Obtained ./pipeline/PIPELINE-FULL-STAGING/Jenkinsfile from git https://git-codecommit.us-east-1.amazonaws.com/v1/repos/todo-list-aws
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/PIPELINE-FULL-STAGING
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential 9546a7fb-13f9-4afd-adbc-8f2d088fe41b
+Cloning the remote Git repository
+Cloning repository https://git-codecommit.us-east-1.amazonaws.com/v1/repos/todo-list-aws
+ > git init /var/lib/jenkins/workspace/PIPELINE-FULL-STAGING # timeout=10
+Fetching upstream changes from https://git-codecommit.us-east-1.amazonaws.com/v1/repos/todo-list-aws
+ > git --version # timeout=10
+ > git --version # 'git version 2.23.3'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://git-codecommit.us-east-1.amazonaws.com/v1/repos/todo-list-aws +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://git-codecommit.us-east-1.amazonaws.com/v1/repos/todo-list-aws # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/develop^{commit} # timeout=10
+Checking out Revision fa91581874c62542d297f69c876d62d741b6398e (refs/remotes/origin/develop)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f fa91581874c62542d297f69c876d62d741b6398e # timeout=10
+Commit message: "v1.9.5"
+ > git rev-list --no-walk fa91581874c62542d297f69c876d62d741b6398e # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Stage 0: Checkout Proyecto GIT)
+[Pipeline] git
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+Warning: CredentialId "codecommit-user-at-222923733616" could not be found.
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://git-codecommit.us-east-1.amazonaws.com/v1/repos/todo-list-aws # timeout=10
+Fetching upstream changes from https://git-codecommit.us-east-1.amazonaws.com/v1/repos/todo-list-aws
+ > git --version # timeout=10
+ > git --version # 'git version 2.23.3'
+ > git fetch --tags --force --progress -- https://git-codecommit.us-east-1.amazonaws.com/v1/repos/todo-list-aws +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/develop^{commit} # timeout=10
+Checking out Revision fa91581874c62542d297f69c876d62d741b6398e (refs/remotes/origin/develop)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f fa91581874c62542d297f69c876d62d741b6398e # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git checkout -b develop fa91581874c62542d297f69c876d62d741b6398e # timeout=10
+Commit message: "v1.9.5"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Stage 1: Setup)
+[Pipeline] sh
++ bash pipeline/PIPELINE-FULL-STAGING/1-setup.sh
+fd80986488e238a8d8c6484d2604f05d5e069e5fbf451bac2849b67106e067ff
+
+An error occurred (ResourceInUseException) when calling the CreateTable operation: Table already exists: localTable
+Collecting requests
+  Using cached requests-2.25.1-py2.py3-none-any.whl (61 kB)
+Collecting radon
+  Using cached radon-5.0.1-py2.py3-none-any.whl (51 kB)
+Collecting flake8
+  Using cached flake8-3.9.2-py2.py3-none-any.whl (73 kB)
+Collecting bandit
+  Using cached bandit-1.7.0-py3-none-any.whl (115 kB)
+Collecting moto[dynamodb2]
+  Using cached moto-2.0.9-py2.py3-none-any.whl (1.3 MB)
+Collecting coverage
+  Using cached coverage-5.5-cp37-cp37m-manylinux2010_x86_64.whl (242 kB)
+Collecting certifi>=2017.4.17
+  Using cached certifi-2021.5.30-py2.py3-none-any.whl (145 kB)
+Collecting idna<3,>=2.5
+  Using cached idna-2.10-py2.py3-none-any.whl (58 kB)
+Collecting urllib3<1.27,>=1.21.1
+  Using cached urllib3-1.26.5-py2.py3-none-any.whl (138 kB)
+Collecting chardet<5,>=3.0.2
+  Using cached chardet-4.0.0-py2.py3-none-any.whl (178 kB)
+Collecting mando<0.7,>=0.6
+  Using cached mando-0.6.4-py2.py3-none-any.whl (29 kB)
+Collecting future
+  Using cached future-0.18.2.tar.gz (829 kB)
+Collecting colorama>=0.4.1; python_version > "3.4"
+  Using cached colorama-0.4.4-py2.py3-none-any.whl (16 kB)
+Collecting pyflakes<2.4.0,>=2.3.0
+  Using cached pyflakes-2.3.1-py2.py3-none-any.whl (68 kB)
+Collecting pycodestyle<2.8.0,>=2.7.0
+  Using cached pycodestyle-2.7.0-py2.py3-none-any.whl (41 kB)
+Collecting importlib-metadata; python_version < "3.8"
+  Using cached importlib_metadata-4.5.0-py3-none-any.whl (17 kB)
+Collecting mccabe<0.7.0,>=0.6.0
+  Using cached mccabe-0.6.1-py2.py3-none-any.whl (8.6 kB)
+Collecting GitPython>=1.0.1
+  Using cached GitPython-3.1.17-py3-none-any.whl (166 kB)
+Collecting stevedore>=1.20.0
+  Using cached stevedore-3.3.0-py3-none-any.whl (49 kB)
+Collecting six>=1.10.0
+  Using cached six-1.16.0-py2.py3-none-any.whl (11 kB)
+Collecting PyYAML>=5.3.1
+  Using cached PyYAML-5.4.1-cp37-cp37m-manylinux1_x86_64.whl (636 kB)
+Collecting botocore>=1.12.201
+  Using cached botocore-1.20.93-py2.py3-none-any.whl (7.6 MB)
+Collecting xmltodict
+  Using cached xmltodict-0.12.0-py2.py3-none-any.whl (9.2 kB)
+Collecting Jinja2>=2.10.1
+  Using cached Jinja2-3.0.1-py3-none-any.whl (133 kB)
+Collecting werkzeug
+  Using cached Werkzeug-2.0.1-py3-none-any.whl (288 kB)
+Collecting cryptography>=3.3.1
+  Using cached cryptography-3.4.7-cp36-abi3-manylinux2014_x86_64.whl (3.2 MB)
+Collecting responses>=0.9.0
+  Using cached responses-0.13.3-py2.py3-none-any.whl (25 kB)
+Requirement already satisfied: setuptools in ./py37-venv/lib/python3.7/site-packages (from moto[dynamodb2]->-r src/requirements.txt (line 5)) (47.1.0)
+Collecting pytz
+  Using cached pytz-2021.1-py2.py3-none-any.whl (510 kB)
+Collecting more-itertools
+  Using cached more_itertools-8.8.0-py3-none-any.whl (48 kB)
+Collecting python-dateutil<3.0.0,>=2.1
+  Using cached python_dateutil-2.8.1-py2.py3-none-any.whl (227 kB)
+Collecting MarkupSafe!=2.0.0a1
+  Using cached MarkupSafe-2.0.1-cp37-cp37m-manylinux2010_x86_64.whl (31 kB)
+Collecting boto3>=1.9.201
+  Using cached boto3-1.17.93-py2.py3-none-any.whl (131 kB)
+Collecting docker>=2.5.1; extra == "dynamodb2"
+  Using cached docker-5.0.0-py2.py3-none-any.whl (146 kB)
+Collecting zipp>=0.5
+  Using cached zipp-3.4.1-py3-none-any.whl (5.2 kB)
+Collecting typing-extensions>=3.6.4; python_version < "3.8"
+  Using cached typing_extensions-3.10.0.0-py3-none-any.whl (26 kB)
+Collecting gitdb<5,>=4.0.1
+  Using cached gitdb-4.0.7-py3-none-any.whl (63 kB)
+Collecting pbr!=2.1.0,>=2.0.0
+  Using cached pbr-5.6.0-py2.py3-none-any.whl (111 kB)
+Collecting jmespath<1.0.0,>=0.7.1
+  Using cached jmespath-0.10.0-py2.py3-none-any.whl (24 kB)
+Collecting cffi>=1.12
+  Using cached cffi-1.14.5-cp37-cp37m-manylinux1_x86_64.whl (402 kB)
+Collecting s3transfer<0.5.0,>=0.4.0
+  Using cached s3transfer-0.4.2-py2.py3-none-any.whl (79 kB)
+Collecting websocket-client>=0.32.0
+  Using cached websocket_client-1.1.0-py2.py3-none-any.whl (68 kB)
+Collecting smmap<5,>=3.0.1
+  Using cached smmap-4.0.0-py2.py3-none-any.whl (24 kB)
+Collecting pycparser
+  Using cached pycparser-2.20-py2.py3-none-any.whl (112 kB)
+Using legacy setup.py install for future, since package 'wheel' is not installed.
+Installing collected packages: certifi, idna, urllib3, chardet, requests, six, mando, future, colorama, radon, pyflakes, pycodestyle, zipp, typing-extensions, importlib-metadata, mccabe, flake8, smmap, gitdb, GitPython, pbr, stevedore, PyYAML, bandit, jmespath, python-dateutil, botocore, xmltodict, MarkupSafe, Jinja2, werkzeug, pycparser, cffi, cryptography, responses, pytz, more-itertools, s3transfer, boto3, websocket-client, docker, moto, coverage
+    Running setup.py install for future: started
+    Running setup.py install for future: finished with status 'done'
+Successfully installed GitPython-3.1.17 Jinja2-3.0.1 MarkupSafe-2.0.1 PyYAML-5.4.1 bandit-1.7.0 boto3-1.17.93 botocore-1.20.93 certifi-2021.5.30 cffi-1.14.5 chardet-4.0.0 colorama-0.4.4 coverage-5.5 cryptography-3.4.7 docker-5.0.0 flake8-3.9.2 future-0.18.2 gitdb-4.0.7 idna-2.10 importlib-metadata-4.5.0 jmespath-0.10.0 mando-0.6.4 mccabe-0.6.1 more-itertools-8.8.0 moto-2.0.9 pbr-5.6.0 pycodestyle-2.7.0 pycparser-2.20 pyflakes-2.3.1 python-dateutil-2.8.1 pytz-2021.1 radon-5.0.1 requests-2.25.1 responses-0.13.3 s3transfer-0.4.2 six-1.16.0 smmap-4.0.0 stevedore-3.3.0 typing-extensions-3.10.0.0 urllib3-1.26.5 websocket-client-1.1.0 werkzeug-2.0.1 xmltodict-0.12.0 zipp-3.4.1
+WARNING: You are using pip version 20.1.1; however, version 21.1.2 is available.
+You should consider upgrading via the '/var/lib/jenkins/workspace/PIPELINE-FULL-STAGING/py37-venv/bin/python3.7 -m pip install --upgrade pip' command.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Stage 2: Pruebas)
+[Pipeline] sh
++ bash pipeline/PIPELINE-FULL-STAGING/2-testing.sh
++ radon cc src -a -nc
++ [[ 0 -ne 0 ]]
++ echo echo '-El test de Revisión estática de código con radon terminó correctamente'
+echo -El test de Revisión estática de código con radon terminó correctamente
++ flake8 src
++ [[ 0 -ne 0 ]]
++ echo echo '-El test de Calidad de código con flake8 terminó correctamente'
+echo -El test de Calidad de código con flake8 terminó correctamente
++ bandit -r src
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.7.9
+Run started:2021-06-13 17:28:59.172380
+
+Test results:
+	No issues identified.
+
+Code scanned:
+	Total lines of code: 257
+	Total lines skipped (#nosec): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0.0
+		Low: 0.0
+		Medium: 0.0
+		High: 0.0
+	Total issues (by confidence):
+		Undefined: 0.0
+		Low: 0.0
+		Medium: 0.0
+		High: 0.0
+Files skipped (0):
++ [[ 0 -ne 0 ]]
++ echo echo '-El test de Seguridad en el código con bandit terminó correctamente'
+echo -El test de Seguridad en el código con bandit terminó correctamente
++ cd tests/unit/
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Stage 3: Construccion)
+[Pipeline] sh
++ bash pipeline/PIPELINE-FULL-STAGING/3-package.sh
++ sam validate --template template.yaml
+/var/lib/jenkins/workspace/PIPELINE-FULL-STAGING/template.yaml is a valid SAM Template
++ sam build --use-container
+Starting Build inside a container
+Building codeuri: src/ runtime: python3.7 metadata: {} functions: ['ListFunction', 'GetFunction', 'CreateFunction', 'DeleteFunction', 'UpdateFunction', 'TranslateFunction']
+
+Fetching amazon/aws-sam-cli-build-image-python3.7 Docker container image......
+Mounting /var/lib/jenkins/workspace/PIPELINE-FULL-STAGING/src as /tmp/samcli/source:ro,delegated inside runtime container
+
+Build Succeeded
+
+Built Artifacts  : .aws-sam/build
+Built Template   : .aws-sam/build/template.yaml
+
+Commands you can use next
+=========================
+[*] Invoke Function: sam local invoke
+[*] Deploy: sam deploy --guided
+    
+Running PythonPipBuilder:ResolveDependencies
+Running PythonPipBuilder:CopySource
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Stage 4: Despliegue)
+[Pipeline] sh
++ bash pipeline/PIPELINE-FULL-STAGING/4-deploy.sh
+
+	Deploying with following values
+	===============================
+	Stack name                   : todo-list-aws-staging
+	Region                       : us-east-1
+	Confirm changeset            : True
+	Deployment s3 bucket         : es-unir-staging-s3-28247-artifacts
+	Capabilities                 : ["CAPABILITY_IAM"]
+	Parameter overrides          : {'Stage': 'staging'}
+	Signing Profiles           : {}
+
+Initiating deployment
+=====================
+ListFunction may not have authorization defined.
+GetFunction may not have authorization defined.
+CreateFunction may not have authorization defined.
+DeleteFunction may not have authorization defined.
+UpdateFunction may not have authorization defined.
+TranslateFunction may not have authorization defined.
+
+Waiting for changeset to be created..
+
+CloudFormation stack changeset
+-------------------------------------------------------------------------------------------------
+Operation                LogicalResourceId        ResourceType             Replacement            
+-------------------------------------------------------------------------------------------------
++ Add                    CreateFunctionCreatePe   AWS::Lambda::Permissio   N/A                    
+                         rmissionProd             n                                               
++ Add                    CreateFunctionRole       AWS::IAM::Role           N/A                    
++ Add                    CreateFunction           AWS::Lambda::Function    N/A                    
++ Add                    DeleteFunctionCreatePe   AWS::Lambda::Permissio   N/A                    
+                         rmissionProd             n                                               
++ Add                    DeleteFunctionRole       AWS::IAM::Role           N/A                    
++ Add                    DeleteFunction           AWS::Lambda::Function    N/A                    
++ Add                    GetFunctionListPermiss   AWS::Lambda::Permissio   N/A                    
+                         ionProd                  n                                               
++ Add                    GetFunctionRole          AWS::IAM::Role           N/A                    
++ Add                    GetFunction              AWS::Lambda::Function    N/A                    
++ Add                    ListFunctionListPermis   AWS::Lambda::Permissio   N/A                    
+                         sionProd                 n                                               
++ Add                    ListFunctionRole         AWS::IAM::Role           N/A                    
++ Add                    ListFunction             AWS::Lambda::Function    N/A                    
++ Add                    ServerlessRestApiDeplo   AWS::ApiGateway::Deplo   N/A                    
+                         yment69572b141a          yment                                           
++ Add                    ServerlessRestApiProdS   AWS::ApiGateway::Stage   N/A                    
+                         tage                                                                     
++ Add                    ServerlessRestApi        AWS::ApiGateway::RestA   N/A                    
+                                                  pi                                              
++ Add                    TranslateFunctionRole    AWS::IAM::Role           N/A                    
++ Add                    TranslateFunctionTrans   AWS::Lambda::Permissio   N/A                    
+                         latePermissionProd       n                                               
++ Add                    TranslateFunction        AWS::Lambda::Function    N/A                    
++ Add                    UpdateFunctionCreatePe   AWS::Lambda::Permissio   N/A                    
+                         rmissionProd             n                                               
++ Add                    UpdateFunctionRole       AWS::IAM::Role           N/A                    
++ Add                    UpdateFunction           AWS::Lambda::Function    N/A                    
++ Add                    todosTable               AWS::DynamoDB::Table     N/A                    
+-------------------------------------------------------------------------------------------------
+
+Changeset created successfully. arn:aws:cloudformation:us-east-1:222923733616:changeSet/samcli-deploy1623605404/55bf70a4-77f4-49ad-a40c-25ad55a9ab93
+
+
+Previewing CloudFormation changeset before deployment
+======================================================
+Deploy this changeset? [y/N]: 
+2021-06-13 17:30:15 - Waiting for stack create/update to complete
+
+CloudFormation events from changeset
+-------------------------------------------------------------------------------------------------
+ResourceStatus           ResourceType             LogicalResourceId        ResourceStatusReason   
+-------------------------------------------------------------------------------------------------
+CREATE_IN_PROGRESS       AWS::IAM::Role           UpdateFunctionRole       Resource creation      
+                                                                           Initiated              
+CREATE_IN_PROGRESS       AWS::IAM::Role           GetFunctionRole          Resource creation      
+                                                                           Initiated              
+CREATE_IN_PROGRESS       AWS::IAM::Role           TranslateFunctionRole    -                      
+CREATE_IN_PROGRESS       AWS::IAM::Role           ListFunctionRole         -                      
+CREATE_IN_PROGRESS       AWS::DynamoDB::Table     todosTable               -                      
+CREATE_IN_PROGRESS       AWS::IAM::Role           CreateFunctionRole       -                      
+CREATE_IN_PROGRESS       AWS::IAM::Role           DeleteFunctionRole       -                      
+CREATE_IN_PROGRESS       AWS::IAM::Role           UpdateFunctionRole       -                      
+CREATE_IN_PROGRESS       AWS::IAM::Role           GetFunctionRole          -                      
+CREATE_IN_PROGRESS       AWS::DynamoDB::Table     todosTable               Resource creation      
+                                                                           Initiated              
+CREATE_IN_PROGRESS       AWS::IAM::Role           TranslateFunctionRole    Resource creation      
+                                                                           Initiated              
+CREATE_IN_PROGRESS       AWS::IAM::Role           ListFunctionRole         Resource creation      
+                                                                           Initiated              
+CREATE_IN_PROGRESS       AWS::IAM::Role           CreateFunctionRole       Resource creation      
+                                                                           Initiated              
+CREATE_IN_PROGRESS       AWS::IAM::Role           DeleteFunctionRole       Resource creation      
+                                                                           Initiated              
+
+CREATE_COMPLETE          AWS::IAM::Role           UpdateFunctionRole       -                      
+CREATE_COMPLETE          AWS::IAM::Role           ListFunctionRole         -                      
+CREATE_COMPLETE          AWS::IAM::Role           TranslateFunctionRole    -                      
+CREATE_COMPLETE          AWS::IAM::Role           CreateFunctionRole       -                      
+CREATE_COMPLETE          AWS::IAM::Role           DeleteFunctionRole       -                      
+CREATE_COMPLETE          AWS::IAM::Role           GetFunctionRole          -                      
+
+CREATE_IN_PROGRESS       AWS::Lambda::Function    UpdateFunction           -                      
+
+CREATE_IN_PROGRESS       AWS::Lambda::Function    CreateFunction           -                      
+CREATE_IN_PROGRESS       AWS::Lambda::Function    GetFunction              -                      
+CREATE_IN_PROGRESS       AWS::Lambda::Function    TranslateFunction        -                      
+CREATE_IN_PROGRESS       AWS::Lambda::Function    DeleteFunction           -                      
+
+CREATE_IN_PROGRESS       AWS::Lambda::Function    ListFunction             -                      
+
+CREATE_COMPLETE          AWS::Lambda::Function    UpdateFunction           -                      
+CREATE_IN_PROGRESS       AWS::Lambda::Function    UpdateFunction           Resource creation      
+                                                                           Initiated              
+
+CREATE_COMPLETE          AWS::Lambda::Function    GetFunction              -                      
+CREATE_IN_PROGRESS       AWS::Lambda::Function    GetFunction              Resource creation      
+                                                                           Initiated              
+CREATE_COMPLETE          AWS::Lambda::Function    ListFunction             -                      
+CREATE_COMPLETE          AWS::Lambda::Function    CreateFunction           -                      
+CREATE_IN_PROGRESS       AWS::Lambda::Function    DeleteFunction           Resource creation      
+                                                                           Initiated              
+CREATE_IN_PROGRESS       AWS::Lambda::Function    ListFunction             Resource creation      
+                                                                           Initiated              
+CREATE_IN_PROGRESS       AWS::Lambda::Function    CreateFunction           Resource creation      
+                                                                           Initiated              
+
+CREATE_COMPLETE          AWS::Lambda::Function    DeleteFunction           -                      
+CREATE_IN_PROGRESS       AWS::Lambda::Function    TranslateFunction        Resource creation      
+                                                                           Initiated              
+
+CREATE_COMPLETE          AWS::Lambda::Function    TranslateFunction        -                      
+
+CREATE_IN_PROGRESS       AWS::ApiGateway::RestA   ServerlessRestApi        -                      
+                         pi                                                                       
+
+CREATE_COMPLETE          AWS::ApiGateway::RestA   ServerlessRestApi        -                      
+                         pi                                                                       
+CREATE_COMPLETE          AWS::DynamoDB::Table     todosTable               -                      
+CREATE_IN_PROGRESS       AWS::ApiGateway::RestA   ServerlessRestApi        Resource creation      
+                         pi                                                Initiated              
+
+CREATE_IN_PROGRESS       AWS::Lambda::Permissio   CreateFunctionCreatePe   -                      
+                         n                        rmissionProd                                    
+CREATE_IN_PROGRESS       AWS::Lambda::Permissio   GetFunctionListPermiss   -                      
+                         n                        ionProd                                         
+CREATE_IN_PROGRESS       AWS::Lambda::Permissio   DeleteFunctionCreatePe   -                      
+                         n                        rmissionProd                                    
+CREATE_IN_PROGRESS       AWS::Lambda::Permissio   TranslateFunctionTrans   -                      
+                         n                        latePermissionProd                              
+CREATE_IN_PROGRESS       AWS::Lambda::Permissio   UpdateFunctionCreatePe   -                      
+                         n                        rmissionProd                                    
+CREATE_IN_PROGRESS       AWS::Lambda::Permissio   ListFunctionListPermis   Resource creation      
+                         n                        sionProd                 Initiated              
+CREATE_IN_PROGRESS       AWS::Lambda::Permissio   CreateFunctionCreatePe   Resource creation      
+                         n                        rmissionProd             Initiated              
+CREATE_IN_PROGRESS       AWS::Lambda::Permissio   GetFunctionListPermiss   Resource creation      
+                         n                        ionProd                  Initiated              
+CREATE_IN_PROGRESS       AWS::Lambda::Permissio   ListFunctionListPermis   -                      
+                         n                        sionProd                                        
+CREATE_IN_PROGRESS       AWS::Lambda::Permissio   DeleteFunctionCreatePe   Resource creation      
+                         n                        rmissionProd             Initiated              
+CREATE_IN_PROGRESS       AWS::Lambda::Permissio   TranslateFunctionTrans   Resource creation      
+                         n                        latePermissionProd       Initiated              
+CREATE_IN_PROGRESS       AWS::ApiGateway::Deplo   ServerlessRestApiDeplo   -                      
+                         yment                    yment69572b141a                                 
+CREATE_IN_PROGRESS       AWS::Lambda::Permissio   UpdateFunctionCreatePe   Resource creation      
+                         n                        rmissionProd             Initiated              
+
+CREATE_COMPLETE          AWS::ApiGateway::Deplo   ServerlessRestApiDeplo   -                      
+                         yment                    yment69572b141a                                 
+CREATE_IN_PROGRESS       AWS::ApiGateway::Deplo   ServerlessRestApiDeplo   Resource creation      
+                         yment                    yment69572b141a          Initiated              
+
+CREATE_IN_PROGRESS       AWS::ApiGateway::Stage   ServerlessRestApiProdS   -                      
+                                                  tage                                            
+
+CREATE_IN_PROGRESS       AWS::ApiGateway::Stage   ServerlessRestApiProdS   Resource creation      
+                                                  tage                     Initiated              
+CREATE_COMPLETE          AWS::ApiGateway::Stage   ServerlessRestApiProdS   -                      
+                                                  tage                                            
+
+CREATE_COMPLETE          AWS::Lambda::Permissio   UpdateFunctionCreatePe   -                      
+                         n                        rmissionProd                                    
+CREATE_COMPLETE          AWS::Lambda::Permissio   ListFunctionListPermis   -                      
+                         n                        sionProd                                        
+CREATE_COMPLETE          AWS::Lambda::Permissio   TranslateFunctionTrans   -                      
+                         n                        latePermissionProd                              
+CREATE_COMPLETE          AWS::Lambda::Permissio   CreateFunctionCreatePe   -                      
+                         n                        rmissionProd                                    
+CREATE_COMPLETE          AWS::Lambda::Permissio   GetFunctionListPermiss   -                      
+                         n                        ionProd                                         
+CREATE_COMPLETE          AWS::Lambda::Permissio   DeleteFunctionCreatePe   -                      
+                         n                        rmissionProd                                    
+
+CREATE_COMPLETE          AWS::CloudFormation::S   todo-list-aws-staging    -                      
+                         tack                                                                     
+-------------------------------------------------------------------------------------------------
+
+CloudFormation outputs from deployed stack
+-------------------------------------------------------------------------------------------------
+Outputs                                                                                         
+-------------------------------------------------------------------------------------------------
+Key                 TranslateFunction                                                           
+Description         Translate Lambda Function ARN                                               
+Value               arn:aws:lambda:us-east-1:222923733616:function:todo-list-aws-staging-       
+TranslateFunction-E8fDdADD3xsS                                                                  
+
+Key                 ListFunction                                                                
+Description         List Lambda Function ARN                                                    
+Value               arn:aws:lambda:us-east-1:222923733616:function:todo-list-aws-staging-       
+ListFunction-tEysy2s1g9qb                                                                       
+
+Key                 CreateApi                                                                   
+Description         API Gateway endpoint URL for ${Stage} stage for Create function             
+Value               https://9ewkaa6d3d.execute-api.us-east-1.amazonaws.com/Prod/todos/          
+
+Key                 UpdateFunctionIamRole                                                       
+Description         Implicit IAM Role created for Update function                               
+Value               arn:aws:iam::222923733616:role/todo-list-aws-staging-UpdateFunctionRole-    
+NEZNAVO5IYJD                                                                                    
+
+Key                 DeleteFunctionIamRole                                                       
+Description         Implicit IAM Role created for Delete function                               
+Value               arn:aws:iam::222923733616:role/todo-list-aws-staging-                       
+DeleteFunctionRole-1LCJIKPVANEDY                                                                
+
+Key                 CreateFunction                                                              
+Description         Create Lambda Function ARN                                                  
+Value               arn:aws:lambda:us-east-1:222923733616:function:todo-list-aws-staging-       
+CreateFunction-KY1iEk7GSykV                                                                     
+
+Key                 GetApi                                                                      
+Description         API Gateway endpoint URL for ${Stage} stage for Get function                
+Value               https://9ewkaa6d3d.execute-api.us-east-1.amazonaws.com/Prod/todos/{id}      
+
+Key                 CreateFunctionIamRole                                                       
+Description         Implicit IAM Role created for Create function                               
+Value               arn:aws:iam::222923733616:role/todo-list-aws-staging-                       
+CreateFunctionRole-1N18NR43H6EVK                                                                
+
+Key                 ListApi                                                                     
+Description         API Gateway endpoint URL for ${Stage} stage for List function               
+Value               https://9ewkaa6d3d.execute-api.us-east-1.amazonaws.com/Prod/todos/          
+
+Key                 GetFunctionIamRole                                                          
+Description         Implicit IAM Role created for Get function                                  
+Value               arn:aws:iam::222923733616:role/todo-list-aws-staging-                       
+GetFunctionRole-4HXE12M4693S                                                                    
+
+Key                 TranslateApi                                                                
+Description         API Gateway endpoint URL for ${Stage} stage for Translate function          
+Value               https://9ewkaa6d3d.execute-api.us-                                          
+east-1.amazonaws.com/Prod/todos/{id}{lang}                                                      
+
+Key                 UpdateApi                                                                   
+Description         API Gateway endpoint URL for ${Stage} stage for Update function             
+Value               https://9ewkaa6d3d.execute-api.us-east-1.amazonaws.com/Prod/todos/{id}      
+
+Key                 UpdateFunction                                                              
+Description         Update Lambda Function ARN                                                  
+Value               arn:aws:lambda:us-east-1:222923733616:function:todo-list-aws-staging-       
+UpdateFunction-h8Pq9lYg2Gww                                                                     
+
+Key                 TranslateFunctionIamRole                                                    
+Description         Implicit IAM Role created for Translate function                            
+Value               arn:aws:iam::222923733616:role/todo-list-aws-staging-TranslateFunctionRole- 
+XQIKXKHRX01N                                                                                    
+
+Key                 ListFunctionIamRole                                                         
+Description         Implicit IAM Role created for List function                                 
+Value               arn:aws:iam::222923733616:role/todo-list-aws-staging-                       
+ListFunctionRole-8H4TAO56JUX7                                                                   
+
+Key                 DeleteFunction                                                              
+Description         Delete Lambda Function ARN                                                  
+Value               arn:aws:lambda:us-east-1:222923733616:function:todo-list-aws-staging-       
+DeleteFunction-GRRlRVCeQOfa                                                                     
+
+Key                 GetFunction                                                                 
+Description         Get Lambda Function ARN                                                     
+Value               arn:aws:lambda:us-east-1:222923733616:function:todo-list-aws-staging-       
+GetFunction-gYzU5ojg1bry                                                                        
+
+Key                 DeleteApi                                                                   
+Description         API Gateway endpoint URL for ${Stage} stage for Delete function             
+Value               https://9ewkaa6d3d.execute-api.us-east-1.amazonaws.com/Prod/todos/{id}      
+-------------------------------------------------------------------------------------------------
+
+Successfully created/updated stack - todo-list-aws-staging in us-east-1
+
+[Pipeline] }
+[Pipeline] // stage
+
+[Pipeline] stage
+[Pipeline] { (Stage 5: Pruebas de Integracion)
+[Pipeline] sh
++ bash pipeline/PIPELINE-FULL-STAGING/5-integration.sh
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Stage 6: Limpieza)
+[Pipeline] deleteDir
+
+[Pipeline] }
+[Pipeline] // stage
+
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] sh
+fd80986488e2
+Total reclaimed space: 0B
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
+
